@@ -1,0 +1,16 @@
+{
+  "name": "SpringBoot-Vue-OnlineExam-master",
+  "version": "1.0.0",
+  "description": "* ## 系统介绍",
+  "main": "index.js",
+  "dependencies": {
+    "qs": "^6.10.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

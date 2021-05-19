@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.exam.mapper.MultiQuestionMapper" >
+
+    <resultMap id="MultiMap"
+               type="com.exam.entity.MultiQuestion">
+        <id property="questionId" column="questionId"/>
+        <result column="subject" jdbcType="VARCHAR"
+                property="subject" />
+        <result column="section" jdbcType="VARCHAR"
+                property="section" />
+        <result column="answerA" jdbcType="VARCHAR"
+                property="answerA" />
+        <result column="answerB" jdbcType="VARCHAR"
+                property="answerB" />
+        <result column="answerC" jdbcType="VARCHAR"
+                property="answerC" />
+        <result column="answerD" jdbcType="VARCHAR"
+                property="answerD" />
+        <result column="question" jdbcType="VARCHAR"
+                property="question" />
+        <result column="level" jdbcType="INTEGER"
+                property="level" />
+        <result column="rightAnswer" jdbcType="VARCHAR"
+                property="rightAnswer" />
+        <result column="analysis" jdbcType="VARCHAR"
+                property="analysis" />
+        <result column="score" jdbcType="INTEGER"
+                property="score" />
+    </resultMap>
+<insert id="add2"  parameterType="java.util.List"  useGeneratedKeys="true" keyProperty="questionId" keyColumn="questionId">
+    insert into multi_question
+    ( subject,question,answerA,answerB,answerC,answerD,rightAnswer,analysis,section,level )
+    values
+    <foreach collection="Multilist" item="item" index="index" separator=",">
+        (
+        #{item.subject},
+        #{item.question},
+        #{item.answerA},
+        #{item.answerB},
+        #{item.answerC},
+        #{item.answerD},
+        #{item.rightAnswer},
+        #{item.analysis},
+        #{item.section},
+        #{item.level}
+        )
+    </foreach>
+</insert>
+
+
+</mapper>
+
+

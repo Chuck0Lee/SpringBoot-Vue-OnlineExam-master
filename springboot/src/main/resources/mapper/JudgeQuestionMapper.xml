@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.exam.mapper.JudgeQuestionMapper" >
+
+    <resultMap id="JudegMap"
+               type="com.exam.entity.JudgeQuestion">
+        <id property="questionId" column="questionId"/>
+        <result column="subject" jdbcType="VARCHAR"
+                property="subject" />
+        <result column="section" jdbcType="VARCHAR"
+                property="section" />
+        <result column="answer" jdbcType="VARCHAR"
+                property="answer" />
+        <result column="question" jdbcType="VARCHAR"
+                property="question" />
+        <result column="level" jdbcType="INTEGER"
+                property="level" />
+        <result column="rightAnswer" jdbcType="VARCHAR"
+                property="rightAnswer" />
+        <result column="analysis" jdbcType="VARCHAR"
+                property="analysis" />
+    </resultMap>
+    <insert id="AddJudge"  parameterType="java.util.List"  useGeneratedKeys="true">
+        insert into judge_question
+        (subject,question,answer,analysis,level,section)
+        values
+        <foreach collection="Judgelist" item="item" index="index" separator=",">
+            (
+            #{item.subject},
+            #{item.question},
+            #{item.answer},
+            #{item.analysis},
+            #{item.level},
+            #{item.section}
+            )
+        </foreach>
+    </insert>
+</mapper>
